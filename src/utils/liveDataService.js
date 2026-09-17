@@ -31,7 +31,7 @@ export const DATA_PROVIDERS = [
   },
   {
     id: 'ai_quant',
-    name: 'ValuaGlobe AI Quantitative Models',
+    name: 'Mathippu-AI Quantitative Models',
     type: 'Machine Learning / Valuation',
     frequency: 'Daily Engine Recalculation',
     status: 'Active (v2.4.8 Model)',

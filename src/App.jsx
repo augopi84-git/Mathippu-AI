@@ -332,7 +332,7 @@ export default function App() {
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-4 md:px-8 mt-12 pt-6 border-t border-slate-800/80 w-full flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
         <div>
-          <span className="font-bold text-white">ValuaGlobe AI</span> — Global Equity Market Valuation & Research Explorer.
+          <span className="font-bold text-white">Mathippu-AI</span> (<span className="text-emerald-400 font-medium">மதிப்பு</span> = Value AI) — Global Equity Market Valuation & Research Explorer.
           <span className="block text-[11px] text-slate-500">
             Last Synced: <strong className="text-slate-300 font-mono">{dbMetadata.formattedDate} ({dbMetadata.formattedTime})</strong> • Engine {dbMetadata.version}
           </span>

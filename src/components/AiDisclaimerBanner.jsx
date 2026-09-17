@@ -77,7 +77,7 @@ export default function AiDisclaimerBanner({ isOpen, onClose }) {
 
         <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
           <span className="text-[10px] font-mono text-slate-500">
-            AI Engine Version: ValuaGlobe-v4.2 | Last Synthesis: Sept 2026
+            AI Engine Version: Mathippu-v4.2 | Last Synthesis: Sept 2026
           </span>
           <button
             onClick={onClose}

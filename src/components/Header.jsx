@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, Globe, RefreshCw, Database, History, BarChart3, LayoutGrid } from 'lucide-react';
+import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, Gem } from 'lucide-react';
 
 export default function Header({
   searchTerm,
@@ -25,30 +25,38 @@ export default function Header({
         {/* Logo, AI Badge & Timestamp */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
-              <Globe className="w-6 h-6 animate-pulse-glow" />
+            {/* Mathippu-AI Logo Emblem */}
+            <div className="relative group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-all">
+                <Gem className="w-5 h-5 text-emerald-300 animate-pulse-glow" />
+              </div>
+              <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
             </div>
+
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-400">
-                  ValuaGlobe AI
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-emerald-400">
+                  Mathippu-AI
                 </h1>
-                <span className="bg-blue-500/20 text-blue-400 border border-blue-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" />
-                  AI Research
+                <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-emerald-300" />
+                  மதிப்பு (Value AI)
                 </span>
                 {/* Live Freshness & Timestamp Badge */}
                 <button
                   onClick={onOpenDataSource}
-                  className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all"
+                  className="bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all"
                   title="Click to view Data Architecture & Source Protocols"
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
                   <span>{dbMetadata.formattedDate} • Live</span>
                 </button>
               </div>
               <p className="text-[11px] text-slate-400">
-                Global Equity Valuation Radar • Real-Time Macro & Historical Index Trends
+                Global Equity Market Valuation Radar • Mathippu (<span className="text-emerald-400 font-medium">மதிப்பு</span> = Value)
               </p>
             </div>
           </div>
@@ -79,7 +87,7 @@ export default function Header({
             onClick={() => onTabChange('radar')}
             className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               activeTab === 'radar'
-                ? 'bg-blue-600 text-white shadow-md'
+                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -91,7 +99,7 @@ export default function Header({
             onClick={() => onTabChange('historical')}
             className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               activeTab === 'historical'
-                ? 'bg-purple-600 text-white shadow-md'
+                ? 'bg-purple-600 text-white shadow-md shadow-purple-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -103,7 +111,7 @@ export default function Header({
             onClick={() => onTabChange('charts')}
             className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               activeTab === 'charts'
-                ? 'bg-indigo-600 text-white shadow-md'
+                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -122,7 +130,7 @@ export default function Header({
               placeholder="Search country or index..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full bg-slate-950/80 border border-slate-800 focus:border-blue-500 text-slate-100 text-xs rounded-xl pl-9 pr-8 py-2 focus:outline-none transition-all"
+              className="w-full bg-slate-950/80 border border-slate-800 focus:border-emerald-500 text-slate-100 text-xs rounded-xl pl-9 pr-8 py-2 focus:outline-none transition-all"
             />
             {searchTerm && (
               <button
@@ -140,7 +148,7 @@ export default function Header({
             <button
               onClick={onRefreshData}
               disabled={isRefreshing}
-              className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-blue-600/90 to-indigo-600/90 hover:from-blue-500 hover:to-indigo-500 border border-blue-500/40 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-500/20"
+              className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 border border-emerald-500/40 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-emerald-500/20"
               title="Fetch Latest Up-to-the-Second Market Data"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -153,7 +161,7 @@ export default function Header({
               className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-all"
               title="Data Architecture & Sources"
             >
-              <Database className="w-4 h-4 text-emerald-400" />
+              <Database className="w-4 h-4 text-blue-400" />
             </button>
 
             <button
@@ -161,7 +169,7 @@ export default function Header({
               className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-all"
               title="Weight Sliders"
             >
-              <Sliders className="w-4 h-4 text-blue-400" />
+              <Sliders className="w-4 h-4 text-purple-400" />
             </button>
 
             <button
@@ -186,7 +194,7 @@ export default function Header({
                 onClick={() => onCategorySelect(cat)}
                 className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
                   selectedCategory === cat
-                    ? 'bg-blue-600 text-white shadow'
+                    ? 'bg-emerald-600 text-white shadow shadow-emerald-500/20'
                     : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800/80'
                 }`}
               >
@@ -203,7 +211,7 @@ export default function Header({
                 onClick={() => onRegionSelect(reg)}
                 className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
                   selectedRegion === reg
-                    ? 'bg-indigo-600 text-white shadow'
+                    ? 'bg-indigo-600 text-white shadow shadow-indigo-500/20'
                     : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800/80'
                 }`}
               >
