@@ -151,6 +151,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [selectedRegion, setSelectedRegion] = useState('ALL');
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedRadarCountry, setSelectedRadarCountry] = useState({ id: 'USA', name: 'United States' });
   const [activeTab, setActiveTab] = useState('radar'); // 'radar', 'historical', 'charts'
 
   // Modals
@@ -183,12 +184,10 @@ export default function App() {
   }, [enrichedCountries]);
 
   const selectedInvestmentCountry = useMemo(() => {
-    const activeCountry = selectedCountry && enrichedCountries.find((country) => country.id === selectedCountry.id)
-      ? selectedCountry
-      : investmentCountryOptions[0] || { id: 'USA', name: 'United States' };
-
-    return activeCountry;
-  }, [selectedCountry, investmentCountryOptions, enrichedCountries]);
+    return enrichedCountries.find((country) => country.id === selectedRadarCountry?.id)
+      || investmentCountryOptions[0]
+      || { id: 'USA', name: 'United States' };
+  }, [enrichedCountries, selectedRadarCountry, investmentCountryOptions]);
 
   const investmentIdeas = COUNTRY_INVESTMENT_IDEAS[selectedInvestmentCountry.id] || COUNTRY_INVESTMENT_IDEAS.USA;
 
@@ -352,7 +351,10 @@ export default function App() {
             {/* Section 1: Interactive Heatmap */}
             <WorldHeatmap
               countries={filteredCountries}
-              onSelectCountry={(c) => setSelectedCountry(c)}
+              onSelectCountry={(c) => {
+                setSelectedCountry(c);
+                setSelectedRadarCountry(c);
+              }}
               selectedCountryId={selectedCountry?.id}
             />
 
@@ -377,7 +379,7 @@ export default function App() {
                     onChange={(event) => {
                       const nextCountry = enrichedCountries.find((entry) => entry.id === event.target.value);
                       if (nextCountry) {
-                        setSelectedCountry(nextCountry);
+                        setSelectedRadarCountry(nextCountry);
                       }
                     }}
                     className="bg-slate-950 border border-slate-700 text-slate-100 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/60"
@@ -453,7 +455,10 @@ export default function App() {
                 {filteredCountries.map((country) => (
                   <div
                     key={country.id}
-                    onClick={() => setSelectedCountry(country)}
+                    onClick={() => {
+                      setSelectedCountry(country);
+                      setSelectedRadarCountry(country);
+                    }}
                     className="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800/90 cursor-pointer flex flex-col justify-between space-y-3"
                   >
                     {/* Card Top */}
