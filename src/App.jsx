@@ -3,6 +3,7 @@ import Header from './components/Header';
 import WorldHeatmap from './components/WorldHeatmap';
 import ValuationCharts from './components/ValuationCharts';
 import HistoricalTrends from './components/HistoricalTrends';
+import InvestmentAnalysisPage from './components/InvestmentAnalysisPage';
 import CountryResearchModal from './components/CountryResearchModal';
 import WeightsModal from './components/WeightsModal';
 import CompareModal from './components/CompareModal';
@@ -541,6 +542,18 @@ export default function App() {
             countries={filteredCountries}
             selectedCountry={selectedCountry}
             onSelectCountry={(c) => setSelectedCountry(c)}
+          />
+        )}
+
+        {activeTab === 'investment' && (
+          <InvestmentAnalysisPage
+            country={selectedInvestmentCountry}
+            onCountryChange={(countryId) => {
+              const nextCountry = enrichedCountries.find((entry) => entry.id === countryId);
+              if (nextCountry) {
+                setSelectedRadarCountry(nextCountry);
+              }
+            }}
           />
         )}
 

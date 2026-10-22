@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, Gem } from 'lucide-react';
+import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, Gem, BriefcaseBusiness } from 'lucide-react';
 
 export default function Header({
   searchTerm,
@@ -117,6 +117,18 @@ export default function Header({
           >
             <BarChart3 className="w-3.5 h-3.5" />
             Scatter & Radar
+          </button>
+
+          <button
+            onClick={() => onTabChange('investment')}
+            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === 'investment'
+                ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <BriefcaseBusiness className="w-3.5 h-3.5" />
+            Stocks & ETFs
           </button>
         </div>
 
