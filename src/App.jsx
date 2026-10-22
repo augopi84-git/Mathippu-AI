@@ -179,15 +179,15 @@ export default function App() {
   }, [countriesData, weights]);
 
   const investmentCountryOptions = useMemo(() => {
-    return enrichedCountries.filter(country => COUNTRY_INVESTMENT_IDEAS[country.id]);
+    return enrichedCountries;
   }, [enrichedCountries]);
 
   const selectedInvestmentCountry = useMemo(() => {
-    if (selectedCountry && COUNTRY_INVESTMENT_IDEAS[selectedCountry.id]) {
-      return selectedCountry;
-    }
+    const activeCountry = selectedCountry && enrichedCountries.find((country) => country.id === selectedCountry.id)
+      ? selectedCountry
+      : investmentCountryOptions[0] || { id: 'USA', name: 'United States' };
 
-    return investmentCountryOptions[0] || enrichedCountries[0] || { id: 'USA', name: 'United States' };
+    return activeCountry;
   }, [selectedCountry, investmentCountryOptions, enrichedCountries]);
 
   const investmentIdeas = COUNTRY_INVESTMENT_IDEAS[selectedInvestmentCountry.id] || COUNTRY_INVESTMENT_IDEAS.USA;
@@ -375,9 +375,9 @@ export default function App() {
                   <select
                     value={selectedInvestmentCountry.id}
                     onChange={(event) => {
-                      const country = enrichedCountries.find((entry) => entry.id === event.target.value);
-                      if (country) {
-                        setSelectedCountry(country);
+                      const nextCountry = enrichedCountries.find((entry) => entry.id === event.target.value);
+                      if (nextCountry) {
+                        setSelectedCountry(nextCountry);
                       }
                     }}
                     className="bg-slate-950 border border-slate-700 text-slate-100 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/60"
