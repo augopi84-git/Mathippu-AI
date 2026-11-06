@@ -30,6 +30,15 @@ export const DATA_PROVIDERS = [
     icon: '⚡'
   },
   {
+    id: 'coingecko',
+    name: 'CoinGecko Live Crypto Feed',
+    type: 'Live Crypto Markets',
+    frequency: 'Real-Time / 60s refreshes',
+    status: 'Connected (Best Public API)',
+    coverage: 'Major digital assets (BTC, ETH, SOL, LINK)',
+    icon: '₿'
+  },
+  {
     id: 'ai_quant',
     name: 'Mathippu-AI Quantitative Models',
     type: 'Machine Learning / Valuation',
@@ -107,5 +116,84 @@ export async function fetchLatestMarketData(currentCountries) {
         metadata: updatedMetadata
       });
     }, 700); // 700ms network fetch delay
+  });
+}
+
+const CRYPTO_ASSET_CONFIG = {
+  BTC: { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', score: 95, tag: 'Store of value', thesis: 'Institutional accumulation and supply scarcity continue to support its role as digital reserve capital.', expectedReturn: '+12% to +28%' },
+  ETH: { id: 'ethereum', name: 'Ethereum', symbol: 'ETH', score: 92, tag: 'Smart money', thesis: 'Layer-2 scaling and staking demand make Ethereum the strongest network-level growth engine in crypto.', expectedReturn: '+15% to +32%' },
+  SOL: { id: 'solana', name: 'Solana', symbol: 'SOL', score: 88, tag: 'High-beta growth', thesis: 'High-throughput applications and ecosystem expansion give it outsized upside in the next bull cycle.', expectedReturn: '+18% to +40%' },
+  LINK: { id: 'chainlink', name: 'Chainlink', symbol: 'LINK', score: 82, tag: 'Infrastructure', thesis: 'Oracle infrastructure remains critical for on-chain data connectivity and institutional token adoption.', expectedReturn: '+10% to +22%' }
+};
+
+function formatUsdPrice(value) {
+  if (!Number.isFinite(value)) return '$0';
+
+  if (value >= 1000) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(value);
+}
+
+function formatMarketCap(value) {
+  if (!Number.isFinite(value)) return '$0';
+
+  if (value >= 1_000_000_000_000) {
+    return `$${(value / 1_000_000_000_000).toFixed(2)}T`;
+  }
+
+  if (value >= 1_000_000_000) {
+    return `$${(value / 1_000_000_000).toFixed(2)}B`;
+  }
+
+  if (value >= 1_000_000) {
+    return `$${(value / 1_000_000).toFixed(2)}M`;
+  }
+
+  return `$${Math.round(value).toLocaleString('en-US')}`;
+}
+
+export async function fetchLatestCryptoData() {
+  const ids = Object.values(CRYPTO_ASSET_CONFIG).map((asset) => asset.id).join(',');
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_market_cap=true&include_24hr_change=true&precision=2`;
+
+  const response = await fetch(url, {
+    headers: {
+      Accept: 'application/json'
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`CoinGecko crypto API request failed with status ${response.status}`);
+  }
+
+  const payload = await response.json();
+
+  return Object.values(CRYPTO_ASSET_CONFIG).map((asset) => {
+    const market = payload[asset.id] || {};
+    const price = Number(market.usd ?? 0);
+    const marketCap = Number(market.usd_market_cap ?? 0);
+
+    return {
+      ...asset,
+      price: formatUsdPrice(price),
+      marketCap: formatMarketCap(marketCap),
+      priceValue: price,
+      score: asset.score,
+      expectedReturn: asset.expectedReturn,
+      thesis: asset.thesis,
+      tag: asset.tag
+    };
   });
 }

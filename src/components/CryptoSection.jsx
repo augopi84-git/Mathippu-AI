@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, Coins, ShieldCheck, Sparkles, TrendingUp } from 'lucide-react';
+import { fetchLatestCryptoData } from '../utils/liveDataService';
 
-const CRYPTO_ASSETS = [
+const DEFAULT_CRYPTO_ASSETS = [
   {
     symbol: 'BTC',
     name: 'Bitcoin',
@@ -45,6 +46,40 @@ const CRYPTO_ASSETS = [
 ];
 
 export default function CryptoSection() {
+  const [cryptoAssets, setCryptoAssets] = useState(DEFAULT_CRYPTO_ASSETS);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadLiveCryptoData = async () => {
+      try {
+        setIsLoading(true);
+        const liveAssets = await fetchLatestCryptoData();
+        if (isMounted) {
+          setCryptoAssets(liveAssets);
+          setError('');
+        }
+      } catch (err) {
+        console.error('Failed to load live crypto data:', err);
+        if (isMounted) {
+          setError('Live crypto feed unavailable right now. Showing the latest cached snapshot.');
+          setCryptoAssets(DEFAULT_CRYPTO_ASSETS);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadLiveCryptoData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className="space-y-6">
       <div className="glass-panel rounded-2xl border border-slate-800 p-5 md:p-6">
@@ -62,13 +97,19 @@ export default function CryptoSection() {
 
           <div className="flex items-center gap-2 bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-300">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            Narrative-driven risk review
+            {isLoading ? 'Refreshing live pricing...' : 'CoinGecko live feed'}
           </div>
         </div>
       </div>
 
+      {error && (
+        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+          {error}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {CRYPTO_ASSETS.map((asset, index) => (
+        {cryptoAssets.map((asset, index) => (
           <div
             key={asset.symbol}
             className="rounded-2xl border border-slate-800 bg-gradient-to-br from-amber-500/10 via-slate-950 to-slate-900 p-4 shadow-[0_0_0_1px_rgba(15,23,42,0.7)]"
