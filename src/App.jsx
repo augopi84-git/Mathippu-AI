@@ -4,6 +4,7 @@ import WorldHeatmap from './components/WorldHeatmap';
 import ValuationCharts from './components/ValuationCharts';
 import HistoricalTrends from './components/HistoricalTrends';
 import InvestmentAnalysisPage from './components/InvestmentAnalysisPage';
+import CryptoSection from './components/CryptoSection';
 import CountryResearchModal from './components/CountryResearchModal';
 import WeightsModal from './components/WeightsModal';
 import CompareModal from './components/CompareModal';
@@ -555,6 +556,10 @@ export default function App() {
               }
             }}
           />
+        )}
+
+        {activeTab === 'crypto' && (
+          <CryptoSection />
         )}
 
       </main>
