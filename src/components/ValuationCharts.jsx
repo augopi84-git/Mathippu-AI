@@ -254,7 +254,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
         <div className="flex items-center gap-2">
           <button
             onClick={() => setActiveTab('ranking')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
               activeTab === 'ranking'
                 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
                 : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
@@ -265,7 +265,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
           </button>
           <button
             onClick={() => setActiveTab('scatter')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
               activeTab === 'scatter'
                 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
                 : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
@@ -276,7 +276,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
           </button>
           <button
             onClick={() => setActiveTab('radar')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
               activeTab === 'radar'
                 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
                 : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'

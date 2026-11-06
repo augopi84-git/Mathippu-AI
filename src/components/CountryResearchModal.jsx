@@ -61,7 +61,7 @@ export default function CountryResearchModal({ country, isOpen, onClose }) {
         <div className="flex items-center gap-2 px-4 md:px-6 pt-3 bg-slate-950/50 border-b border-slate-800/80 text-xs font-medium">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`pb-2.5 px-3 border-b-2 transition-all flex items-center gap-1.5 ${
+            className={`pb-2.5 px-3 border-b-2 transition-[color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               activeTab === 'overview'
                 ? 'border-blue-500 text-blue-400 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -72,7 +72,7 @@ export default function CountryResearchModal({ country, isOpen, onClose }) {
           </button>
           <button
             onClick={() => setActiveTab('thesis')}
-            className={`pb-2.5 px-3 border-b-2 transition-all flex items-center gap-1.5 ${
+            className={`pb-2.5 px-3 border-b-2 transition-[color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               activeTab === 'thesis'
                 ? 'border-blue-500 text-blue-400 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -83,7 +83,7 @@ export default function CountryResearchModal({ country, isOpen, onClose }) {
           </button>
           <button
             onClick={() => setActiveTab('scenarios')}
-            className={`pb-2.5 px-3 border-b-2 transition-all flex items-center gap-1.5 ${
+            className={`pb-2.5 px-3 border-b-2 transition-[color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               activeTab === 'scenarios'
                 ? 'border-blue-500 text-blue-400 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -129,7 +129,7 @@ export default function CountryResearchModal({ country, isOpen, onClose }) {
           {activeTab === 'overview' && (
             <div className="space-y-4">
               {/* AI Macro Synthesis Box */}
-              <div className="p-4 bg-gradient-to-r from-blue-950/40 to-slate-900 border border-blue-500/30 rounded-2xl space-y-2">
+              <div className="p-4 bg-slate-900 border border-blue-500/30 rounded-xl space-y-2">
                 <div className="flex items-center gap-2 text-blue-400 font-bold text-xs uppercase tracking-wider">
                   <Sparkles className="w-4 h-4 animate-pulse" />
                   AI Macro Synthesis Report
@@ -285,7 +285,7 @@ export default function CountryResearchModal({ country, isOpen, onClose }) {
                     <div
                       key={i}
                       onClick={() => handleApplyScenario(sc)}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      className={`p-4 rounded-xl border cursor-pointer transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
                         isSelected
                           ? 'bg-blue-950/60 border-blue-500 shadow-lg shadow-blue-500/20'
                           : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'

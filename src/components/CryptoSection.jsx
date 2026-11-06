@@ -112,13 +112,13 @@ export default function CryptoSection() {
         {cryptoAssets.map((asset, index) => (
           <div
             key={asset.symbol}
-            className="rounded-2xl border border-slate-800 bg-gradient-to-br from-amber-500/10 via-slate-950 to-slate-900 p-4 shadow-[0_0_0_1px_rgba(15,23,42,0.7)]"
+            className="rounded-xl border border-slate-800 bg-slate-950/70 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400">#{index + 1} Asset</div>
                 <div className="mt-2 flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/40 to-slate-950 border border-amber-500/30 flex items-center justify-center text-xs font-black text-white">
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-xs font-black text-amber-300">
                     {asset.symbol.slice(0, 2)}
                   </div>
                   <div>
@@ -144,7 +144,7 @@ export default function CryptoSection() {
 
             <div className="mt-4 h-2.5 w-full rounded-full bg-slate-950 overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-amber-400 to-yellow-500"
+                className="h-full rounded-full bg-amber-400"
                 style={{ width: `${asset.score}%` }}
               />
             </div>

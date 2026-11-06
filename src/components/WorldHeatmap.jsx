@@ -355,9 +355,27 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
 
       {/* ── Legend & Category Filters ── */}
       <div className="mt-4 pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-1.5 text-slate-400">
-          <Info className="w-4 h-4 text-blue-400" />
-          <span>Valuation Scale:</span>
+        <div className="flex items-center gap-2 text-slate-400">
+          <Info className="w-4 h-4 text-blue-400 shrink-0" />
+          <label htmlFor="heatmap-country" className="font-medium">Open market</label>
+          <select
+            id="heatmap-country"
+            value={selectedCountryId || ''}
+            onChange={(event) => {
+              const country = countries.find((entry) => entry.id === event.target.value);
+              if (country) onSelectCountry(country);
+            }}
+            className="min-w-44 rounded-md border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            <option value="" disabled>Select a market</option>
+            {[...countries]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((country) => (
+                <option key={country.id} value={country.id}>
+                  {country.flag} {country.name}
+                </option>
+              ))}
+          </select>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -372,7 +390,7 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
                 key={cat.key}
                 onMouseEnter={() => setActiveCategoryHighlight(cat.key)}
                 onMouseLeave={() => setActiveCategoryHighlight(null)}
-                className={`flex items-center gap-2 px-2.5 py-1 rounded-lg border transition-all ${
+                className={`flex items-center gap-2 px-2.5 py-1 rounded-lg border transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                   isHighlighted
                     ? 'bg-slate-800 border-white text-white scale-105 shadow-md'
                     : 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700'

@@ -250,7 +250,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans selection:bg-blue-500 selection:text-white pb-12">
+    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col selection:bg-blue-500 selection:text-white pb-12">
       {/* Header */}
       <Header
         searchTerm={searchTerm}
@@ -274,78 +274,52 @@ export default function App() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 md:px-8 mt-6 space-y-6 flex-1 w-full">
 
-        {/* Hero Quick Stat Highlight Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Monitored Markets */}
-          <div className="glass-panel rounded-2xl p-4 border border-slate-800 flex items-center gap-3">
-            <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
-              <BarChart3 className="w-5 h-5" />
-            </div>
+        {/* Market overview strip */}
+        <section aria-labelledby="market-overview-title">
+          <div className="mb-3 flex items-end justify-between gap-4 border-b border-slate-800 pb-3">
             <div>
-              <span className="text-[11px] text-slate-400 font-medium uppercase tracking-wider block">Global Economies</span>
-              <div className="text-xl font-bold text-white flex items-center gap-1.5">
-                <span>{filteredCountries.length} Markets</span>
-                <span className="text-xs text-slate-500 font-normal">/ {enrichedCountries.length} Total</span>
-              </div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Market overview</p>
+              <h2 id="market-overview-title" className="mt-1 text-xl font-semibold tracking-tight text-white">
+                {filteredCountries.length} monitored economies
+              </h2>
+            </div>
+            <time className="font-mono text-xs text-slate-500">{dbMetadata.formattedDate}</time>
+          </div>
+          <div className="grid grid-cols-2 border-y border-slate-800 lg:grid-cols-4">
+            <button
+              type="button"
+              onClick={() => setSelectedCountry(mostUndervalued)}
+              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400"
+            >
+              <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Most undervalued</span>
+              <span className="mt-1 block truncate text-lg font-semibold text-white">{mostUndervalued.flag} {mostUndervalued.name}</span>
+              <span className="mt-1 block text-xs text-slate-400">{mostUndervalued.valuation.score}/100 · CAPE {mostUndervalued.metrics.cape}x</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedCountry(highestYielding)}
+              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400"
+            >
+              <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Top dividend market</span>
+              <span className="mt-1 block truncate text-lg font-semibold text-white">{highestYielding.flag} {highestYielding.name}</span>
+              <span className="mt-1 block text-xs text-slate-400">{highestYielding.metrics.divYield}% dividend yield</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsDataSourceModalOpen(true)}
+              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-400"
+            >
+              <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Average CAPE</span>
+              <span className="mt-1 block text-lg font-semibold text-white">{avgCape}x</span>
+              <span className="mt-1 block text-xs text-slate-500">View data source</span>
+            </button>
+            <div className="px-4 py-4">
+              <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Universe coverage</span>
+              <span className="mt-1 block text-lg font-semibold text-white">{filteredCountries.length} / {enrichedCountries.length}</span>
+              <span className="mt-1 block text-xs text-slate-500">Markets available</span>
             </div>
           </div>
-
-          {/* Most Undervalued */}
-          <div
-            onClick={() => setSelectedCountry(mostUndervalued)}
-            className="glass-panel glass-panel-hover cursor-pointer rounded-2xl p-4 border border-emerald-500/30 bg-emerald-500/5 flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">{mostUndervalued.flag}</span>
-              <div>
-                <span className="text-[11px] text-emerald-400 font-bold uppercase tracking-wider block flex items-center gap-1">
-                  <TrendingDown className="w-3 h-3" /> Most Undervalued
-                </span>
-                <div className="text-base font-bold text-white">{mostUndervalued.name}</div>
-                <div className="text-[11px] text-slate-400">Score: {mostUndervalued.valuation.score}/100 • CAPE {mostUndervalued.metrics.cape}x</div>
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-emerald-400" />
-          </div>
-
-          {/* Highest Dividend Yield */}
-          <div
-            onClick={() => setSelectedCountry(highestYielding)}
-            className="glass-panel glass-panel-hover cursor-pointer rounded-2xl p-4 border border-amber-500/30 bg-amber-500/5 flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">{highestYielding.flag}</span>
-              <div>
-                <span className="text-[11px] text-amber-400 font-bold uppercase tracking-wider block flex items-center gap-1">
-                  <Percent className="w-3 h-3" /> Top Dividend Market
-                </span>
-                <div className="text-base font-bold text-white">{highestYielding.name}</div>
-                <div className="text-[11px] text-slate-400">{highestYielding.metrics.divYield}% Dividend Yield</div>
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-amber-400" />
-          </div>
-
-          {/* Global CAPE Average & Live Timestamp */}
-          <div
-            onClick={() => setIsDataSourceModalOpen(true)}
-            className="glass-panel glass-panel-hover cursor-pointer rounded-2xl p-4 border border-slate-800 flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-[11px] text-slate-400 font-medium uppercase tracking-wider block">Avg CAPE Ratio</span>
-                <div className="text-xl font-bold text-white">{avgCape}x</div>
-                <div className="text-[11px] text-emerald-400 font-mono flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {dbMetadata.formattedDate}
-                </div>
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 text-slate-500" />
-          </div>
-        </div>
+        </section>
 
         {/* View Switcher Routing */}
         {activeTab === 'radar' && (
@@ -445,7 +419,7 @@ export default function App() {
 
                 <button
                   onClick={handleExportCSV}
-                  className="flex items-center gap-2 px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition-all self-start sm:self-auto"
+                  className="flex items-center gap-2 px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 self-start sm:self-auto"
                 >
                   <Download className="w-3.5 h-3.5 text-blue-400" />
                   Export CSV Dataset
@@ -455,13 +429,14 @@ export default function App() {
               {/* Cards Grid / Responsive Table */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredCountries.map((country) => (
-                  <div
+                  <button
+                    type="button"
                     key={country.id}
                     onClick={() => {
                       setSelectedCountry(country);
                       setSelectedRadarCountry(country);
                     }}
-                    className="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800/90 cursor-pointer flex flex-col justify-between space-y-3"
+                    className="glass-panel rounded-xl p-4 border border-slate-800/90 text-left flex flex-col justify-between space-y-3 transition-colors duration-100 hover:border-slate-600 hover:bg-slate-900/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                   >
                     {/* Card Top */}
                     <div className="flex items-start justify-between gap-2">
@@ -487,7 +462,7 @@ export default function App() {
                       </div>
                       <div className="w-full h-2 bg-slate-950 rounded-full overflow-hidden">
                         <div
-                          className="h-full rounded-full transition-all duration-500"
+                          className="h-full rounded-full transition-[width] duration-100 ease-out"
                           style={{
                             width: `${country.valuation.score}%`,
                             backgroundColor: country.valuation.category.color
@@ -517,7 +492,7 @@ export default function App() {
                       <span>View AI Research & Thesis</span>
                       <ChevronRight className="w-4 h-4" />
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
 

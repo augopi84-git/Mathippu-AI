@@ -142,7 +142,7 @@ export default function InvestmentAnalysisPage({ country, onCountryChange }) {
               <button
                 key={type.id}
                 onClick={() => setAssetType(type.id)}
-                className={`px-4 py-2 rounded-xl border text-sm font-semibold transition-all ${
+                className={`px-4 py-2 rounded-xl border text-sm font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
                   assetType === type.id
                     ? `${type.chip} shadow-lg`
                     : 'bg-slate-900/70 text-slate-300 border-slate-800 hover:text-white'
@@ -160,7 +160,7 @@ export default function InvestmentAnalysisPage({ country, onCountryChange }) {
                 <button
                   key={count}
                   onClick={() => setTopN(count)}
-                  className={`w-10 h-10 rounded-xl border text-sm font-bold transition-all ${
+                  className={`w-10 h-10 rounded-xl border text-sm font-bold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
                     topN === count
                       ? 'bg-emerald-600 text-white border-emerald-500'
                       : 'bg-slate-900 text-slate-300 border-slate-800 hover:text-white'
@@ -178,7 +178,7 @@ export default function InvestmentAnalysisPage({ country, onCountryChange }) {
         {topItems.map((item, index) => (
           <div
             key={`${assetType}-${item.ticker}-${index}`}
-            className={`rounded-2xl border border-slate-800 bg-gradient-to-br ${assetType === 'stocks' ? 'from-emerald-500/10 to-slate-900/90' : 'from-blue-500/10 to-slate-900/90'} p-4 shadow-[0_0_0_1px_rgba(15,23,42,0.7)]`}
+            className="rounded-xl border border-slate-800 bg-slate-950/70 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div>

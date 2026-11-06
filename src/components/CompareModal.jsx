@@ -215,7 +215,7 @@ export default function CompareModal({ countries, isOpen, onClose, onSelectCount
         <div className="p-4 border-t border-slate-800 bg-slate-900/90 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-blue-500/20"
+            className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
           >
             Done Comparing
           </button>

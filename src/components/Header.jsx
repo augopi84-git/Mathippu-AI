@@ -27,7 +27,7 @@ export default function Header({
           <div className="flex items-center gap-3">
             {/* Mathippu-AI Logo Emblem */}
             <div className="relative group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-all">
+              <div className="w-10 h-10 rounded-lg border border-emerald-400/30 bg-slate-900 flex items-center justify-center text-emerald-400">
                 <Gem className="w-5 h-5 text-emerald-300 animate-pulse-glow" />
               </div>
               <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
@@ -38,7 +38,7 @@ export default function Header({
 
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-emerald-400">
+                <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white">
                   Mathippu-AI
                 </h1>
                 <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
@@ -48,7 +48,7 @@ export default function Header({
                 {/* Live Freshness & Timestamp Badge */}
                 <button
                   onClick={onOpenDataSource}
-                  className="bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-all"
+                  className="bg-slate-900 hover:bg-slate-800 text-blue-400 border border-slate-700 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-md flex items-center gap-1.5 transition-colors duration-100"
                   title="Click to view Data Architecture & Source Protocols"
                 >
                   <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
@@ -85,7 +85,7 @@ export default function Header({
         <div className="flex items-center bg-slate-950/90 p-1 rounded-xl border border-slate-800 self-center text-xs font-semibold">
           <button
             onClick={() => onTabChange('radar')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
               activeTab === 'radar'
                 ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/20'
                 : 'text-slate-400 hover:text-slate-200'
@@ -97,7 +97,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('historical')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               activeTab === 'historical'
                 ? 'bg-purple-600 text-white shadow-md shadow-purple-500/20'
                 : 'text-slate-400 hover:text-slate-200'
@@ -109,7 +109,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('charts')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
               activeTab === 'charts'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
                 : 'text-slate-400 hover:text-slate-200'
@@ -121,7 +121,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('investment')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'investment'
                 ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
                 : 'text-slate-400 hover:text-slate-200'
@@ -133,7 +133,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('crypto')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'crypto'
                 ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
                 : 'text-slate-400 hover:text-slate-200'
@@ -154,7 +154,7 @@ export default function Header({
               placeholder="Search country or index..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full bg-slate-950/80 border border-slate-800 focus:border-emerald-500 text-slate-100 text-xs rounded-xl pl-9 pr-8 py-2 focus:outline-none transition-all"
+              className="w-full bg-slate-950/80 border border-slate-800 focus:border-emerald-500 text-slate-100 text-xs rounded-lg pl-9 pr-8 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors duration-100"
             />
             {searchTerm && (
               <button
@@ -172,7 +172,7 @@ export default function Header({
             <button
               onClick={onRefreshData}
               disabled={isRefreshing}
-              className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 border border-emerald-500/40 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-emerald-500/20"
+              className="flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-500 border border-emerald-500 text-white rounded-lg text-xs font-bold transition-colors duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
               title="Fetch Latest Up-to-the-Second Market Data"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -182,7 +182,7 @@ export default function Header({
             {/* Data Source Modal Trigger */}
             <button
               onClick={onOpenDataSource}
-              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-all"
+              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               title="Data Architecture & Sources"
             >
               <Database className="w-4 h-4 text-blue-400" />
@@ -190,7 +190,7 @@ export default function Header({
 
             <button
               onClick={onOpenWeights}
-              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-all"
+              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               title="Weight Sliders"
             >
               <Sliders className="w-4 h-4 text-purple-400" />
@@ -198,7 +198,7 @@ export default function Header({
 
             <button
               onClick={onOpenCompare}
-              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-all"
+              className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white rounded-xl transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
               title="Compare Markets"
             >
               <ArrowLeftRight className="w-4 h-4 text-amber-400" />
@@ -216,7 +216,7 @@ export default function Header({
               <button
                 key={cat}
                 onClick={() => onCategorySelect(cat)}
-                className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                className={`px-2.5 py-1 rounded-lg font-medium transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
                   selectedCategory === cat
                     ? 'bg-emerald-600 text-white shadow shadow-emerald-500/20'
                     : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800/80'
@@ -233,7 +233,7 @@ export default function Header({
               <button
                 key={reg}
                 onClick={() => onRegionSelect(reg)}
-                className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                className={`px-2.5 py-1 rounded-lg font-medium transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${
                   selectedRegion === reg
                     ? 'bg-indigo-600 text-white shadow shadow-indigo-500/20'
                     : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800/80'

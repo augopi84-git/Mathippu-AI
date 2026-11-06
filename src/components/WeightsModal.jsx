@@ -64,28 +64,28 @@ export default function WeightsModal({ weights, onWeightsChange, isOpen, onClose
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
             <button
               onClick={() => applyPreset({ cape: 0.35, pe: 0.25, forwardPe: 0.15, pb: 0.15, buffettIndicator: 0.05, divYield: 0.05 })}
-              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-all"
+              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
             >
               <div className="font-bold text-emerald-400 text-[11px]">Deep Value</div>
               <div className="text-[10px] text-slate-400">CAPE & Trailing P/E</div>
             </button>
             <button
               onClick={() => applyPreset({ cape: 0.10, pe: 0.15, forwardPe: 0.40, pb: 0.15, buffettIndicator: 0.15, divYield: 0.05 })}
-              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-all"
+              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
             >
               <div className="font-bold text-blue-400 text-[11px]">Forward Growth</div>
               <div className="text-[10px] text-slate-400">Forward P/E Heavy</div>
             </button>
             <button
               onClick={() => applyPreset({ cape: 0.10, pe: 0.15, forwardPe: 0.10, pb: 0.15, buffettIndicator: 0.10, divYield: 0.40 })}
-              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-all"
+              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
             >
               <div className="font-bold text-amber-400 text-[11px]">High Yield</div>
               <div className="text-[10px] text-slate-400">Dividend Focus</div>
             </button>
             <button
               onClick={() => applyPreset(DEFAULT_WEIGHTS)}
-              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-all"
+              className="p-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-200 rounded-lg text-left transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
             >
               <div className="font-bold text-purple-400 text-[11px]">Balanced AI</div>
               <div className="text-[10px] text-slate-400">Multi-Factor Default</div>
@@ -148,7 +148,7 @@ export default function WeightsModal({ weights, onWeightsChange, isOpen, onClose
             </button>
             <button
               onClick={handleSave}
-              className="flex items-center gap-1.5 px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-blue-500/20"
+              className="flex items-center gap-1.5 px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-bold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
             >
               <Check className="w-4 h-4" />
               Recalculate Map & Charts

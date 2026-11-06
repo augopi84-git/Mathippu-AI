@@ -30,7 +30,7 @@ export default function DataSourceModal({ isOpen, onClose, dbMetadata, onRefresh
 
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-all"
+            className="p-2 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -133,7 +133,7 @@ export default function DataSourceModal({ isOpen, onClose, dbMetadata, onRefresh
           <button
             onClick={onRefreshData}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-blue-500/25"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98]"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
             {isRefreshing ? 'Syncing Live Feeds...' : 'Fetch Latest Live Market Data'}

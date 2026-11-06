@@ -213,7 +213,7 @@ export default function HistoricalTrends() {
         <div className="flex items-center bg-slate-950/80 p-1 rounded-xl border border-slate-800 self-start md:self-auto text-xs font-semibold">
           <button
             onClick={() => setTimeHorizon('monthly')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               timeHorizon === 'monthly' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -223,7 +223,7 @@ export default function HistoricalTrends() {
 
           <button
             onClick={() => setTimeHorizon('yearly')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               timeHorizon === 'yearly' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -233,7 +233,7 @@ export default function HistoricalTrends() {
 
           <button
             onClick={() => setTimeHorizon('trajectory')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               timeHorizon === 'trajectory' ? 'bg-purple-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -342,7 +342,7 @@ export default function HistoricalTrends() {
                   <button
                     key={key}
                     onClick={() => setSelectedCountryKey(key)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] border flex items-center gap-1.5 ${
                       isSelected
                         ? 'bg-purple-600 text-white border-purple-500 shadow-lg shadow-purple-500/20'
                         : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700'

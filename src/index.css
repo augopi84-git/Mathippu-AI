@@ -25,7 +25,7 @@
 }
 
 .glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 100ms ease-out, background-color 100ms ease-out, border-color 100ms ease-out;
 }
 
 .glass-panel-hover:hover {
