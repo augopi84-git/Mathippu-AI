@@ -210,10 +210,10 @@ export default function HistoricalTrends() {
         </div>
 
         {/* View Horizon Controls */}
-        <div className="flex items-center bg-slate-950/80 p-1 rounded-xl border border-slate-800 self-start md:self-auto text-xs font-semibold">
+        <div className="flex max-w-full items-center overflow-x-auto overscroll-x-contain bg-slate-950/80 p-1 rounded-xl border border-slate-800 self-start md:self-auto text-xs font-semibold">
           <button
             onClick={() => setTimeHorizon('monthly')}
-            className={`px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
+            className={`shrink-0 px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               timeHorizon === 'monthly' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -223,7 +223,7 @@ export default function HistoricalTrends() {
 
           <button
             onClick={() => setTimeHorizon('yearly')}
-            className={`px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
+            className={`shrink-0 px-3.5 py-1.5 rounded-lg transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] flex items-center gap-1.5 ${
               timeHorizon === 'yearly' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -259,7 +259,7 @@ export default function HistoricalTrends() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-[11px]">
+              <div className="flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 text-[11px]">
                 <span className="flex items-center gap-1 text-emerald-400 font-medium">
                   <span className="w-2 h-2 rounded-full bg-emerald-500" /> Undervalued
                 </span>
@@ -387,7 +387,7 @@ export default function HistoricalTrends() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
+        <div className="w-full max-w-full overflow-x-auto overscroll-x-contain">
           <table className="w-full text-left text-xs text-slate-300">
             <thead className="bg-slate-900/80 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
               <tr>

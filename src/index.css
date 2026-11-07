@@ -326,6 +326,7 @@
   .market-shell main {
     padding-left: 12px;
     padding-right: 12px;
+    min-width: 0;
   }
 
   .market-shell h1 {

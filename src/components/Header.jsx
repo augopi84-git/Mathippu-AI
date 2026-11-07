@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, BriefcaseBusiness, Coins } from 'lucide-react';
+import { Search, Sliders, ArrowLeftRight, Sparkles, RefreshCw, Database, History, BarChart3, LayoutGrid, BriefcaseBusiness, Coins } from 'lucide-react';
 
 export default function Header({
   searchTerm,
@@ -10,7 +10,6 @@ export default function Header({
   onRegionSelect,
   onOpenWeights,
   onOpenCompare,
-  onOpenDisclaimer,
   onOpenDataSource,
   onRefreshData,
   isRefreshing,
@@ -71,7 +70,11 @@ export default function Header({
         </div>
 
         {/* Navigation Tabs (Main Views) */}
-        <div className="flex items-center overflow-x-auto bg-[#eeece5] p-1 rounded-xl border border-[#dcded7] self-center text-xs font-semibold">
+        <nav
+          aria-label="Primary market views"
+          className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain bg-[#eeece5] p-1 rounded-xl border border-[#dcded7] self-center text-xs font-semibold xl:w-auto"
+        >
+          <div className="flex w-max min-w-full items-center">
           <button
             onClick={() => onTabChange('radar')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
@@ -131,7 +134,8 @@ export default function Header({
             <Coins className="w-3.5 h-3.5" />
             Crypto
           </button>
-        </div>
+          </div>
+        </nav>
 
         {/* Search Bar & Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full lg:w-auto">

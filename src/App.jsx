@@ -14,7 +14,7 @@ import DataSourceModal from './components/DataSourceModal';
 import { COUNTRY_MARKET_DATA, DEFAULT_WEIGHTS } from './data/countryMarketData';
 import { getEnrichedCountries } from './utils/valuationEngine';
 import { fetchLatestMarketData, INITIAL_DATABASE_METADATA } from './utils/liveDataService';
-import { Download, Sparkles, TrendingDown, Percent, BarChart3, ChevronRight, Filter, Clock, Database, BriefcaseBusiness, ArrowUpRight } from 'lucide-react';
+import { Download, ChevronRight, Filter, Database, BriefcaseBusiness, ArrowUpRight } from 'lucide-react';
 
 const INVESTMENT_TIME_BUCKETS = [
   { key: 'daily', label: 'Daily', hint: 'Tactical swing', returnRange: '+0.5% to +2.5%' },
@@ -391,9 +391,10 @@ export default function App() {
                   <p className="text-xs text-slate-400 mt-1">{investmentIdeas.summary}</p>
                 </div>
 
-                <label className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
+                <label htmlFor="radar-country" className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
                   <span>Country</span>
                   <select
+                    id="radar-country"
                     value={selectedInvestmentCountry.id}
                     onChange={(event) => {
                       const nextCountry = enrichedCountries.find((entry) => entry.id === event.target.value);

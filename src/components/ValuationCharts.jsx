@@ -251,7 +251,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     <div className="glass-panel rounded-2xl p-4 md:p-6 border border-slate-800 shadow-2xl flex flex-col justify-between">
       {/* Chart Navigation Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-        <div className="flex items-center gap-2">
+        <div className="flex w-full max-w-full items-center gap-2 overflow-x-auto overscroll-x-contain pb-1 sm:w-auto sm:overflow-visible">
           <button
             onClick={() => setActiveTab('ranking')}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-semibold transition-[color,background-color,border-color] duration-100 ease-out active:scale-[0.98] ${

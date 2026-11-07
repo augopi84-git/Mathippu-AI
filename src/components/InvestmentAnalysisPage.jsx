@@ -153,9 +153,10 @@ export default function InvestmentAnalysisPage({ country, countries = [], onCoun
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <label className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
+            <label htmlFor="investment-country" className="flex items-center gap-2 text-xs text-slate-300 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2">
               <span>Country</span>
               <select
+                id="investment-country"
                 value={countryId}
                 onChange={(event) => onCountryChange?.(event.target.value)}
                 className="bg-slate-950 border border-slate-700 text-slate-100 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/60"
