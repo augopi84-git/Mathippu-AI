@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, Gem, BriefcaseBusiness, Coins } from 'lucide-react';
+import { Search, Sliders, ArrowLeftRight, Sparkles, ShieldAlert, RefreshCw, Database, History, BarChart3, LayoutGrid, Scale, BriefcaseBusiness, Coins } from 'lucide-react';
 
 export default function Header({
   searchTerm,
@@ -24,23 +24,15 @@ export default function Header({
       <div className="max-w-[92rem] mx-auto flex flex-col xl:flex-row xl:items-center justify-between gap-4">
         {/* Logo, AI Badge & Timestamp */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {/* Mathippu-AI Logo Emblem */}
-            <div className="relative group">
-              <div className="w-10 h-10 rounded-lg border border-[#173f35]/20 bg-[#173f35] flex items-center justify-center text-[#d8ff3e]">
-                <Gem className="w-5 h-5 text-emerald-300 animate-pulse-glow" />
-              </div>
-              <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-            </div>
+          <div className="flex items-center gap-3 min-w-0">
+            <img
+              src="./mathippu-ai-logo.jpg"
+              alt="Mathippu-AI"
+              className="h-12 w-[220px] max-w-[48vw] object-contain object-left"
+            />
 
-            <div>
+            <div className="hidden sm:block">
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl md:text-2xl font-bold tracking-[-0.04em] text-[#17201d]">
-                  Mathippu-AI
-                </h1>
                 <span className="bg-[#d8ff3e] text-[#173f35] border border-[#173f35]/10 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-emerald-300" />
                   மதிப்பு (Value AI)
@@ -55,9 +47,6 @@ export default function Header({
                   <span>{dbMetadata.formattedDate} • Live</span>
                 </button>
               </div>
-              <p className="text-[11px] text-[#68716d]">
-                Global Equity Market Valuation Radar • Mathippu (<span className="text-emerald-400 font-medium">மதிப்பு</span> = Value)
-              </p>
             </div>
           </div>
 
