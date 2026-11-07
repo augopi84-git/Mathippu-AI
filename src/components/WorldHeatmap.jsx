@@ -61,14 +61,14 @@ const CountryPath = memo(function CountryPath({
   onMouseLeave,
   onClick,
 }) {
-  let fill = '#d8d8cf';
-  let stroke = '#fbfaf6';
+  let fill = '#bcc3b8';
+  let stroke = '#737c76';
   let strokeWidth = 0.5;
   let opacity = 0.9;
 
   if (country) {
     fill = country.valuation.category.color;
-    stroke = '#0f172a';
+    stroke = '#404841';
     strokeWidth = isSelected ? 2 : 0.6;
     opacity =
       activeCategoryHighlight &&
@@ -92,7 +92,7 @@ const CountryPath = memo(function CountryPath({
         default: { opacity, outline: 'none', transition: 'fill 120ms ease-out, stroke 120ms ease-out' },
         hover: {
           opacity: 1,
-          fill: country ? country.valuation.category.color : '#c9cbc3',
+          fill: country ? country.valuation.category.color : '#aeb7aa',
           filter: country ? 'brightness(1.3)' : 'brightness(1.1)',
           outline: 'none',
           cursor: country ? 'pointer' : 'default',
@@ -238,7 +238,7 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 50% 40%, #f5f5ef 0%, #e8ebe4 100%)',
+              'radial-gradient(ellipse at 50% 40%, #edf2ee 0%, #dde4dc 100%)',
           }}
         />
 
@@ -250,8 +250,8 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           {/* Subtle graticule */}
           <defs>
             <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#f5f5ef" />
-              <stop offset="100%" stopColor="#e8ebe4" />
+              <stop offset="0%" stopColor="#edf2ee" />
+              <stop offset="100%" stopColor="#dde4dc" />
             </linearGradient>
           </defs>
 
