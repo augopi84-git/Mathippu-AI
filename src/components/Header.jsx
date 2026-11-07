@@ -20,14 +20,14 @@ export default function Header({
   countryCount
 }) {
   return (
-    <header className="glass-panel sticky top-0 z-40 border-b border-slate-800 shadow-xl px-4 py-3 md:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <header className="market-header glass-panel sticky top-0 z-40 px-4 py-3 md:px-8">
+      <div className="max-w-[92rem] mx-auto flex flex-col xl:flex-row xl:items-center justify-between gap-4">
         {/* Logo, AI Badge & Timestamp */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Mathippu-AI Logo Emblem */}
             <div className="relative group">
-              <div className="w-10 h-10 rounded-lg border border-emerald-400/30 bg-slate-900 flex items-center justify-center text-emerald-400">
+              <div className="w-10 h-10 rounded-lg border border-[#173f35]/20 bg-[#173f35] flex items-center justify-center text-[#d8ff3e]">
                 <Gem className="w-5 h-5 text-emerald-300 animate-pulse-glow" />
               </div>
               <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
@@ -38,10 +38,10 @@ export default function Header({
 
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white">
+                <h1 className="text-xl md:text-2xl font-bold tracking-[-0.04em] text-[#17201d]">
                   Mathippu-AI
                 </h1>
-                <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span className="bg-[#d8ff3e] text-[#173f35] border border-[#173f35]/10 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-emerald-300" />
                   மதிப்பு (Value AI)
                 </span>
@@ -55,7 +55,7 @@ export default function Header({
                   <span>{dbMetadata.formattedDate} • Live</span>
                 </button>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-[#68716d]">
                 Global Equity Market Valuation Radar • Mathippu (<span className="text-emerald-400 font-medium">மதிப்பு</span> = Value)
               </p>
             </div>
@@ -82,13 +82,13 @@ export default function Header({
         </div>
 
         {/* Navigation Tabs (Main Views) */}
-        <div className="flex items-center bg-slate-950/90 p-1 rounded-xl border border-slate-800 self-center text-xs font-semibold">
+        <div className="flex items-center overflow-x-auto bg-[#eeece5] p-1 rounded-xl border border-[#dcded7] self-center text-xs font-semibold">
           <button
             onClick={() => onTabChange('radar')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
               activeTab === 'radar'
-                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/20'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#173f35] text-white shadow-sm'
+                : 'text-[#68716d] hover:text-[#17201d]'
             }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
@@ -99,8 +99,8 @@ export default function Header({
             onClick={() => onTabChange('historical')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               activeTab === 'historical'
-                ? 'bg-purple-600 text-white shadow-md shadow-purple-500/20'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#173f35] text-white shadow-sm'
+                : 'text-[#68716d] hover:text-[#17201d]'
             }`}
           >
             <History className="w-3.5 h-3.5" />
@@ -111,8 +111,8 @@ export default function Header({
             onClick={() => onTabChange('charts')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
               activeTab === 'charts'
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#173f35] text-white shadow-sm'
+                : 'text-[#68716d] hover:text-[#17201d]'
             }`}
           >
             <BarChart3 className="w-3.5 h-3.5" />
@@ -123,8 +123,8 @@ export default function Header({
             onClick={() => onTabChange('investment')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'investment'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#173f35] text-white shadow-sm'
+                : 'text-[#68716d] hover:text-[#17201d]'
             }`}
           >
             <BriefcaseBusiness className="w-3.5 h-3.5" />
@@ -135,8 +135,8 @@ export default function Header({
             onClick={() => onTabChange('crypto')}
             className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'crypto'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#173f35] text-white shadow-sm'
+                : 'text-[#68716d] hover:text-[#17201d]'
             }`}
           >
             <Coins className="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ export default function Header({
               placeholder="Search country or index..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full bg-slate-950/80 border border-slate-800 focus:border-emerald-500 text-slate-100 text-xs rounded-lg pl-9 pr-8 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors duration-100"
+              className="w-full bg-white border border-[#dcded7] focus:border-[#173f35] text-[#17201d] placeholder:text-[#969d99] text-xs rounded-xl pl-9 pr-8 py-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#173f35]/30 transition-colors duration-100"
             />
             {searchTerm && (
               <button

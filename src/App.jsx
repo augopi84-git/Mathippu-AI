@@ -250,7 +250,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col selection:bg-blue-500 selection:text-white pb-12">
+    <div className="market-shell min-h-screen bg-[#f3f1eb] text-[#17201d] flex flex-col pb-12">
       {/* Header */}
       <Header
         searchTerm={searchTerm}
@@ -272,33 +272,33 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 mt-6 space-y-6 flex-1 w-full">
+      <main className="max-w-[92rem] mx-auto px-4 md:px-8 mt-7 space-y-7 flex-1 w-full">
 
         {/* Market overview strip */}
-        <section aria-labelledby="market-overview-title">
-          <div className="mb-3 flex items-end justify-between gap-4 border-b border-slate-800 pb-3">
+        <section className="market-overview" aria-labelledby="market-overview-title">
+          <div className="mb-3 flex items-end justify-between gap-4 border-b border-[#dcded7] pb-3">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Market overview</p>
-              <h2 id="market-overview-title" className="mt-1 text-xl font-semibold tracking-tight text-white">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#68716d]">Market overview</p>
+              <h2 id="market-overview-title" className="mt-1 text-[clamp(1.5rem,2vw,2rem)] font-semibold tracking-[-0.04em] text-[#17201d]">
                 {filteredCountries.length} monitored economies
               </h2>
             </div>
-            <time className="font-mono text-xs text-slate-500">{dbMetadata.formattedDate}</time>
+            <time className="hidden font-mono text-xs text-[#68716d] sm:block">{dbMetadata.formattedDate}</time>
           </div>
-          <div className="grid grid-cols-2 border-y border-slate-800 lg:grid-cols-4">
+          <div className="overflow-hidden rounded-2xl border border-[#dcded7] bg-[#fbfaf7] grid grid-cols-2 lg:grid-cols-4">
             <button
               type="button"
               onClick={() => setSelectedCountry(mostUndervalued)}
-              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400"
+              className="market-overview-stat market-action border-b border-r border-[#dcded7] px-4 py-5 text-left transition-colors duration-100 hover:bg-[#eef1e8] lg:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#173f35]"
             >
-              <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Most undervalued</span>
-              <span className="mt-1 block truncate text-lg font-semibold text-white">{mostUndervalued.flag} {mostUndervalued.name}</span>
-              <span className="mt-1 block text-xs text-slate-400">{mostUndervalued.valuation.score}/100 · CAPE {mostUndervalued.metrics.cape}x</span>
+              <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-[#68716d]">Most undervalued</span>
+              <span className="mt-2 block truncate text-lg font-semibold tracking-tight text-[#17201d]">{mostUndervalued.flag} {mostUndervalued.name}</span>
+              <span className="mt-1 block text-xs text-[#68716d]">{mostUndervalued.valuation.score}/100 · CAPE {mostUndervalued.metrics.cape}x</span>
             </button>
             <button
               type="button"
               onClick={() => setSelectedCountry(highestYielding)}
-              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400"
+              className="market-overview-stat market-action border-b border-[#dcded7] px-4 py-5 text-left transition-colors duration-100 hover:bg-[#eef1e8] lg:border-b-0 lg:border-r focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#173f35]"
             >
               <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Top dividend market</span>
               <span className="mt-1 block truncate text-lg font-semibold text-white">{highestYielding.flag} {highestYielding.name}</span>
@@ -307,13 +307,13 @@ export default function App() {
             <button
               type="button"
               onClick={() => setIsDataSourceModalOpen(true)}
-              className="border-r border-slate-800 px-4 py-4 text-left transition-colors duration-100 hover:bg-slate-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-400"
+              className="market-overview-stat market-action border-r border-[#dcded7] px-4 py-5 text-left transition-colors duration-100 hover:bg-[#eef1e8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#173f35]"
             >
               <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Average CAPE</span>
               <span className="mt-1 block text-lg font-semibold text-white">{avgCape}x</span>
               <span className="mt-1 block text-xs text-slate-500">View data source</span>
             </button>
-            <div className="px-4 py-4">
+            <div className="px-4 py-5">
               <span className="block text-[11px] font-medium uppercase tracking-wider text-slate-500">Universe coverage</span>
               <span className="mt-1 block text-lg font-semibold text-white">{filteredCountries.length} / {enrichedCountries.length}</span>
               <span className="mt-1 block text-xs text-slate-500">Markets available</span>
@@ -335,7 +335,7 @@ export default function App() {
             />
 
             {/* Section 2: Country Investment Ideas by Time Horizon */}
-            <div className="glass-panel rounded-2xl p-4 md:p-6 border border-slate-800 shadow-2xl space-y-5">
+            <div className="market-content glass-panel rounded-2xl p-4 md:p-6 space-y-5">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-4 border-b border-slate-800">
                 <div>
                   <div className="flex items-center gap-2 text-sm text-emerald-400 font-semibold uppercase tracking-[0.18em]">
