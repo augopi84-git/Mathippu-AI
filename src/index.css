@@ -195,6 +195,18 @@
 }
 
 /* Espace visual-system compatibility layer for existing screens. */
+.market-map-canvas > .rsm-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.market-map-canvas .rsm-geography {
+  vector-effect: non-scaling-stroke;
+}
+
 .market-shell {
   --panel: #fbfaf6;
   --panel-soft: #f1efe7;

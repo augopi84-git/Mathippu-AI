@@ -14,10 +14,7 @@ import {
   ChevronRight,
   Globe,
 } from 'lucide-react';
-
-// ── Free TopoJSON world map (Natural Earth, no API key needed) ─────────────────
-const GEO_URL =
-  'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+import worldMap from 'world-atlas/countries-110m.json';
 
 // ── ISO numeric → ISO 3-letter mapping for countries in our dataset ───────────
 // (Natural Earth uses numeric IDs, our data uses alpha-3)
@@ -61,8 +58,8 @@ const CountryPath = memo(function CountryPath({
   onMouseLeave,
   onClick,
 }) {
-  let fill = '#bcc3b8';
-  let stroke = '#737c76';
+  let fill = '#7f9288';
+  let stroke = '#33443c';
   let strokeWidth = 0.5;
   let opacity = 0.9;
 
@@ -92,7 +89,7 @@ const CountryPath = memo(function CountryPath({
         default: { opacity, outline: 'none', transition: 'fill 120ms ease-out, stroke 120ms ease-out' },
         hover: {
           opacity: 1,
-          fill: country ? country.valuation.category.color : '#aeb7aa',
+          fill: country ? country.valuation.category.color : '#718079',
           filter: country ? 'brightness(1.3)' : 'brightness(1.1)',
           outline: 'none',
           cursor: country ? 'pointer' : 'default',
@@ -229,8 +226,8 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
 
       {/* ── Map Canvas ── */}
       <div
-        className="relative w-full rounded-xl overflow-hidden border border-slate-900 bg-slate-950/70"
-        style={{ height: '460px' }}
+        className="market-map-canvas relative w-full rounded-xl overflow-hidden border border-slate-900 bg-slate-950/70"
+        style={{ minHeight: '320px', height: 'clamp(320px, 52vw, 460px)' }}
         onMouseMove={handleMouseMove}
       >
         {/* Ocean background gradient */}
@@ -238,7 +235,7 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 50% 40%, #edf2ee 0%, #dde4dc 100%)',
+              'linear-gradient(135deg, #dce7e1 0%, #cbd9d1 100%)',
           }}
         />
 
@@ -262,7 +259,7 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
             minZoom={0.9}
             maxZoom={8}
           >
-            <Geographies geography={GEO_URL}>
+            <Geographies geography={worldMap}>
               {({ geographies }) =>
                 geographies.map((geo) => {
                   const numericId = parseInt(geo.id, 10);
