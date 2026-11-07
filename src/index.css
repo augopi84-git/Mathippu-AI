@@ -214,6 +214,22 @@
 .market-shell .text-slate-300 { color: #59615e !important; }
 .market-shell .text-slate-400 { color: #59615e !important; }
 .market-shell .text-slate-500 { color: #59615e !important; }
+.market-shell .text-emerald-300,
+.market-shell .text-emerald-400 { color: #176b52 !important; }
+.market-shell .text-blue-300,
+.market-shell .text-blue-400,
+.market-shell .text-cyan-300,
+.market-shell .text-cyan-400 { color: #245f88 !important; }
+.market-shell .text-amber-300,
+.market-shell .text-amber-400,
+.market-shell .text-yellow-300,
+.market-shell .text-yellow-400 { color: #8a6400 !important; }
+.market-shell .text-rose-300,
+.market-shell .text-rose-400,
+.market-shell .text-red-300,
+.market-shell .text-red-400 { color: #9f354b !important; }
+.market-shell .text-purple-300,
+.market-shell .text-purple-400 { color: #6645a3 !important; }
 
 .market-shell .bg-slate-950,
 .market-shell .bg-slate-950\/80,

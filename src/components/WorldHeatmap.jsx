@@ -77,7 +77,7 @@ const CountryPath = memo(function CountryPath({
         : 1;
 
     if (isHovered || isSelected) {
-      stroke = '#ffffff';
+      stroke = '#173f35';
       strokeWidth = isSelected ? 2 : 1.5;
     }
   }
@@ -89,7 +89,7 @@ const CountryPath = memo(function CountryPath({
       stroke={stroke}
       strokeWidth={strokeWidth}
       style={{
-        default: { opacity, outline: 'none', transition: 'all 0.15s ease' },
+        default: { opacity, outline: 'none', transition: 'fill 120ms ease-out, stroke 120ms ease-out' },
         hover: {
           opacity: 1,
           fill: country ? country.valuation.category.color : '#c9cbc3',
@@ -238,7 +238,7 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 50% 40%, rgba(15,23,42,0.6) 0%, rgba(2,6,23,0.95) 100%)',
+              'radial-gradient(ellipse at 50% 40%, #f5f5ef 0%, #e8ebe4 100%)',
           }}
         />
 
@@ -250,8 +250,8 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           {/* Subtle graticule */}
           <defs>
             <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0c1a2e" />
-              <stop offset="100%" stopColor="#060d1a" />
+              <stop offset="0%" stopColor="#f5f5ef" />
+              <stop offset="100%" stopColor="#e8ebe4" />
             </linearGradient>
           </defs>
 
