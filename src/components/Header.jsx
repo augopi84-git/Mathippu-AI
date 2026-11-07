@@ -20,9 +20,9 @@ export default function Header({
 }) {
   return (
     <header className="market-header glass-panel sticky top-0 z-40 px-4 py-3 md:px-8">
-      <div className="max-w-[92rem] mx-auto flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+      <div className="max-w-[92rem] mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Logo, AI Badge & Timestamp */}
-        <div className="flex items-center justify-between">
+        <div className="order-1 flex flex-1 items-center justify-between xl:flex-none">
           <div className="flex items-center gap-3 min-w-0">
             <img
               src="./mathippu-ai-logo-cropped.jpg"
@@ -72,12 +72,12 @@ export default function Header({
         {/* Navigation Tabs (Main Views) */}
         <nav
           aria-label="Primary market views"
-          className="w-full min-w-0 max-w-full overflow-x-auto overscroll-x-contain bg-[#eeece5] p-1 rounded-xl border border-[#dcded7] self-center text-xs font-semibold xl:w-auto"
+          className="order-3 w-full min-w-0 max-w-full overflow-hidden bg-[#eeece5] p-1 rounded-xl border border-[#dcded7] text-xs font-semibold"
         >
-          <div className="flex w-max min-w-full items-center">
+          <div className="grid grid-cols-2 gap-1 sm:grid-cols-5 sm:gap-0">
           <button
             onClick={() => onTabChange('radar')}
-            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
+            className={`min-w-0 justify-center px-2 py-2 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
               activeTab === 'radar'
                 ? 'bg-[#173f35] text-white shadow-sm'
                 : 'text-[#68716d] hover:text-[#17201d]'
@@ -89,7 +89,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('historical')}
-            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
+            className={`min-w-0 justify-center px-2 py-2 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
               activeTab === 'historical'
                 ? 'bg-[#173f35] text-white shadow-sm'
                 : 'text-[#68716d] hover:text-[#17201d]'
@@ -101,7 +101,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('charts')}
-            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+            className={`min-w-0 justify-center px-2 py-2 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
               activeTab === 'charts'
                 ? 'bg-[#173f35] text-white shadow-sm'
                 : 'text-[#68716d] hover:text-[#17201d]'
@@ -113,7 +113,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('investment')}
-            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+            className={`min-w-0 justify-center px-2 py-2 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'investment'
                 ? 'bg-[#173f35] text-white shadow-sm'
                 : 'text-[#68716d] hover:text-[#17201d]'
@@ -125,7 +125,7 @@ export default function Header({
 
           <button
             onClick={() => onTabChange('crypto')}
-            className={`px-3.5 py-1.5 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+            className={`min-w-0 justify-center px-2 py-2 rounded-md transition-colors duration-100 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
               activeTab === 'crypto'
                 ? 'bg-[#173f35] text-white shadow-sm'
                 : 'text-[#68716d] hover:text-[#17201d]'
@@ -138,7 +138,7 @@ export default function Header({
         </nav>
 
         {/* Search Bar & Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full lg:w-auto">
+        <div className="order-2 flex flex-col sm:flex-row items-center gap-2.5 w-full lg:w-auto">
           {/* Search Box */}
           <div className="relative w-full sm:w-60">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
