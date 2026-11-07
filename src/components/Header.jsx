@@ -26,13 +26,16 @@ export default function Header({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <img
-              src="./mathippu-ai-logo.jpg"
+              src="./mathippu-ai-mark.png"
               alt="Mathippu-AI"
-              className="h-12 w-[220px] max-w-[48vw] object-contain object-left"
+              className="h-12 w-12 shrink-0 object-contain"
             />
 
             <div className="hidden sm:block">
               <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-xl md:text-2xl font-bold tracking-[-0.04em] text-[#17201d]">
+                  Mathippu-AI
+                </h1>
                 <span className="bg-[#d8ff3e] text-[#173f35] border border-[#173f35]/10 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-emerald-300" />
                   மதிப்பு (Value AI)
