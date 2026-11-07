@@ -92,26 +92,26 @@ export default function HistoricalTrends() {
     scales: {
       x: {
         stacked: true,
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8', font: { size: 10 } }
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774', font: { size: 10 } }
       },
       y: {
         stacked: true,
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8', font: { size: 10 } },
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774', font: { size: 10 } },
         title: { display: true, text: 'Number of Global Markets', color: '#64748b', font: { size: 11 } }
       }
     },
     plugins: {
       legend: {
         position: 'top',
-        labels: { color: '#cbd5e1', font: { size: 11 }, usePointStyle: true, boxWidth: 8 }
+        labels: { color: '#59615e', font: { size: 11 }, usePointStyle: true, boxWidth: 8 }
       },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        backgroundColor: '#1d2521',
         titleColor: '#ffffff',
-        bodyColor: '#cbd5e1',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
+        bodyColor: '#f2f3ef',
+        borderColor: '#343d39',
         borderWidth: 1,
         padding: 12
       }
@@ -159,8 +159,8 @@ export default function HistoricalTrends() {
     interaction: { mode: 'index', intersect: false },
     scales: {
       x: {
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8', font: { size: 10 } }
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774', font: { size: 10 } }
       },
       yIndex: {
         type: 'linear',
@@ -180,13 +180,13 @@ export default function HistoricalTrends() {
     plugins: {
       legend: {
         position: 'top',
-        labels: { color: '#cbd5e1', font: { size: 11 }, usePointStyle: true }
+        labels: { color: '#59615e', font: { size: 11 }, usePointStyle: true }
       },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        backgroundColor: '#1d2521',
         titleColor: '#ffffff',
-        bodyColor: '#cbd5e1',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
+        bodyColor: '#f2f3ef',
+        borderColor: '#343d39',
         borderWidth: 1,
         padding: 12
       }

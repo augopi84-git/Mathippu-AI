@@ -62,10 +62,10 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
           return c.valuation.score;
         }),
         backgroundColor: sortedCountries.map(c => c.valuation.category.color),
-        borderColor: sortedCountries.map(c => c.id === selectedCountry?.id ? '#ffffff' : c.valuation.category.color),
+        borderColor: sortedCountries.map(c => c.id === selectedCountry?.id ? '#173f35' : c.valuation.category.color),
         borderWidth: sortedCountries.map(c => c.id === selectedCountry?.id ? 2 : 1),
         borderRadius: 6,
-        hoverBackgroundColor: '#ffffff'
+        hoverBackgroundColor: '#173f35'
       }
     ]
   };
@@ -77,10 +77,10 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        backgroundColor: '#1d2521',
         titleColor: '#ffffff',
-        bodyColor: '#cbd5e1',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
+        bodyColor: '#f2f3ef',
+        borderColor: '#343d39',
         borderWidth: 1,
         padding: 12,
         callbacks: {
@@ -100,12 +100,12 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     },
     scales: {
       x: {
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8' }
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774' }
       },
       y: {
         grid: { display: false },
-        ticks: { color: '#f1f5f9', font: { size: 11 } }
+        ticks: { color: '#59615e', font: { size: 11 } }
       }
     },
     onClick: (e, elements) => {
@@ -129,7 +129,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
         backgroundColor: countries.map(c => c.valuation.category.color),
         pointRadius: countries.map(c => c.id === selectedCountry?.id ? 10 : 6),
         pointHoverRadius: 10,
-        borderColor: '#ffffff',
+        borderColor: '#fbfaf6',
         borderWidth: countries.map(c => c.id === selectedCountry?.id ? 3 : 1)
       }
     ]
@@ -141,7 +141,7 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        backgroundColor: '#1d2521',
         padding: 12,
         callbacks: {
           label: (context) => {
@@ -160,16 +160,16 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     },
     scales: {
       x: {
-        title: { display: true, text: 'Equity Valuation Index (Cheaper ← 0 - 100 → More Expensive)', color: '#94a3b8', font: { size: 11 } },
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8' },
+        title: { display: true, text: 'Equity Valuation Index (Cheaper ← 0 - 100 → More Expensive)', color: '#707774', font: { size: 11 } },
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774' },
         min: 0,
         max: 100
       },
       y: {
-        title: { display: true, text: 'Expected 5-Year Annualized CAGR (%)', color: '#94a3b8', font: { size: 11 } },
-        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94a3b8' }
+        title: { display: true, text: 'Expected 5-Year Annualized CAGR (%)', color: '#707774', font: { size: 11 } },
+        grid: { color: 'rgba(29, 37, 33, 0.08)' },
+        ticks: { color: '#707774' }
       }
     },
     onClick: (e, elements) => {
@@ -220,10 +220,10 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
           globalSubScores.div
         ],
         backgroundColor: 'rgba(148, 163, 184, 0.15)',
-        borderColor: '#94a3b8',
+        borderColor: '#707774',
         borderWidth: 1.5,
         borderDash: [4, 4],
-        pointBackgroundColor: '#94a3b8'
+        pointBackgroundColor: '#707774'
       }
     ]
   };
@@ -234,14 +234,14 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
     plugins: {
       legend: {
         position: 'top',
-        labels: { color: '#cbd5e1', font: { size: 12 } }
+        labels: { color: '#59615e', font: { size: 12 } }
       }
     },
     scales: {
       r: {
-        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
-        grid: { color: 'rgba(255, 255, 255, 0.08)' },
-        pointLabels: { color: '#cbd5e1', font: { size: 11 } },
+        angleLines: { color: 'rgba(29, 37, 33, 0.12)' },
+        grid: { color: 'rgba(29, 37, 33, 0.09)' },
+        pointLabels: { color: '#59615e', font: { size: 11 } },
         ticks: { display: false, min: 0, max: 100 }
       }
     }

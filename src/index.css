@@ -193,3 +193,131 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Espace visual-system compatibility layer for existing screens. */
+.market-shell {
+  --panel: #fbfaf6;
+  --panel-soft: #f1efe7;
+  --paper-line: #dddcd3;
+  --ink-soft: #59615e;
+}
+
+.market-shell .glass-panel {
+  background: rgba(251, 250, 246, 0.96);
+  border-color: var(--paper-line);
+  box-shadow: 0 18px 50px rgba(41, 44, 38, 0.07);
+}
+
+.market-shell .text-white { color: #1d2521 !important; }
+.market-shell .text-slate-100 { color: #242c28 !important; }
+.market-shell .text-slate-200 { color: #303936 !important; }
+.market-shell .text-slate-300 { color: #59615e !important; }
+.market-shell .text-slate-400 { color: #707774 !important; }
+.market-shell .text-slate-500 { color: #858a87 !important; }
+
+.market-shell .bg-slate-950,
+.market-shell .bg-slate-950\/80,
+.market-shell .bg-slate-950\/70,
+.market-shell .bg-slate-950\/60,
+.market-shell .bg-slate-900,
+.market-shell .bg-slate-900\/80,
+.market-shell .bg-slate-900\/70,
+.market-shell .bg-slate-900\/60 {
+  background-color: var(--panel) !important;
+}
+
+.market-shell .bg-slate-800,
+.market-shell .bg-slate-800\/80,
+.market-shell .bg-slate-800\/70 {
+  background-color: var(--panel-soft) !important;
+}
+
+.market-shell .border-slate-950,
+.market-shell .border-slate-900,
+.market-shell .border-slate-800,
+.market-shell .border-slate-800\/80,
+.market-shell .border-slate-800\/60,
+.market-shell .border-slate-700 {
+  border-color: var(--paper-line) !important;
+}
+
+.market-shell .bg-\[\#0b0f19\],
+.market-shell .bg-\[\#1e293b\] { background-color: var(--panel) !important; }
+
+.market-shell input,
+.market-shell select,
+.market-shell textarea {
+  color: #1d2521;
+  background-color: #fff;
+}
+
+.market-shell input::placeholder,
+.market-shell textarea::placeholder { color: #929792; }
+
+.market-shell .rounded-2xl,
+.market-shell .rounded-xl {
+  border-radius: 18px !important;
+}
+
+.market-shell button:focus-visible,
+.market-shell input:focus-visible,
+.market-shell select:focus-visible {
+  outline: 2px solid #173f35;
+  outline-offset: 2px;
+}
+
+.market-shell .bg-\[\#173f35\].text-white,
+.market-shell .bg-emerald-600.text-white,
+.market-shell .bg-blue-600.text-white,
+.market-shell .bg-purple-600.text-white,
+.market-shell .bg-amber-600.text-white {
+  color: #fff !important;
+}
+
+.market-shell [class*="grid-cols-"] > * {
+  min-width: 0;
+}
+
+.market-shell .glass-panel-hover,
+.market-shell [class*="glass-panel"] button,
+.market-shell .market-content button {
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.market-shell .overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #b8bbb5 transparent;
+}
+
+@media (max-width: 640px) {
+  .market-shell {
+    font-size: 15px;
+  }
+
+  .market-shell main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .market-shell h1 {
+    font-size: 1.15rem;
+    line-height: 1.15;
+  }
+
+  .market-shell h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .market-shell h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .market-shell .glass-panel {
+    border-radius: 14px;
+  }
+
+  .market-shell table {
+    font-size: 12px;
+  }
+}

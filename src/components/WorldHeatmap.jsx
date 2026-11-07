@@ -40,7 +40,7 @@ const NUMERIC_TO_ALPHA3 = {
   840: 'USA', 858: 'URY', 862: 'VEN', 704: 'VNM', 887: 'YEM',
   716: 'ZWE', 702: 'SGP', 426: 'LSO', 516: 'NAM', 418: 'LAO',
   496: 'MNG', 524: 'NPL', 422: 'LBN', 440: 'LTU', 428: 'LVA',
-  233: 'EST', 756: 'CHE', 703: 'SVK', 578: 'NOR', 208: 'DNK',
+  233: 'EST',
 };
 
 // ── Projection options ─────────────────────────────────────────────────────────
@@ -61,8 +61,8 @@ const CountryPath = memo(function CountryPath({
   onMouseLeave,
   onClick,
 }) {
-  let fill = '#1e293b';
-  let stroke = '#334155';
+  let fill = '#d8d8cf';
+  let stroke = '#fbfaf6';
   let strokeWidth = 0.5;
   let opacity = 0.9;
 
@@ -92,7 +92,7 @@ const CountryPath = memo(function CountryPath({
         default: { opacity, outline: 'none', transition: 'all 0.15s ease' },
         hover: {
           opacity: 1,
-          fill: country ? country.valuation.category.color : '#334155',
+          fill: country ? country.valuation.category.color : '#c9cbc3',
           filter: country ? 'brightness(1.3)' : 'brightness(1.1)',
           outline: 'none',
           cursor: country ? 'pointer' : 'default',
