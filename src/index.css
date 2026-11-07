@@ -1,5 +1,123 @@
 @import "tailwindcss";
 
+.ecosystem-home {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ecosystem-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.ecosystem-gradient {
+  background: linear-gradient(90deg, #ffffff 10%, #67e8f9 52%, #60a5fa 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ecosystem-app-card {
+  transition: transform 140ms ease-out, border-color 140ms ease-out, box-shadow 140ms ease-out;
+}
+
+.ecosystem-app-card:hover {
+  transform: translateY(-4px);
+}
+
+.ecosystem-app-card:first-child:hover {
+  border-color: rgba(103, 232, 249, 0.7);
+  box-shadow: 0 24px 80px rgba(34, 211, 238, 0.16);
+}
+
+.ecosystem-network::before,
+.ecosystem-network::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(103, 232, 249, 0.12);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+
+.ecosystem-network::before { width: 220px; height: 220px; }
+.ecosystem-network::after { width: 420px; height: 160px; }
+
+.network-core {
+  border: 1px solid rgba(103, 232, 249, 0.65);
+  background: radial-gradient(circle, rgba(103, 232, 249, 0.95) 0 3%, rgba(37, 99, 235, 0.7) 24%, transparent 68%);
+  box-shadow: 0 0 50px rgba(34, 211, 238, 0.32);
+  animation: ecosystem-pulse 2.8s ease-in-out infinite;
+}
+
+.network-node,
+.network-stream {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.network-node {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #67e8f9;
+  box-shadow: 0 0 16px #22d3ee;
+  animation: ecosystem-node 3.4s ease-in-out infinite alternate;
+}
+
+.network-node-1 { transform: translate(-180px,-70px); }
+.network-node-2 { transform: translate(-230px,36px); animation-delay: -.4s; }
+.network-node-3 { transform: translate(-120px,90px); animation-delay: -.8s; }
+.network-node-4 { transform: translate(115px,-82px); animation-delay: -.2s; }
+.network-node-5 { transform: translate(220px,-20px); animation-delay: -.7s; }
+.network-node-6 { transform: translate(165px,82px); animation-delay: -1.1s; }
+.network-node-7 { transform: translate(-8px,-110px); animation-delay: -.5s; }
+.network-node-8 { transform: translate(32px,112px); animation-delay: -.9s; }
+
+.network-stream {
+  width: 2px;
+  height: 90px;
+  transform-origin: top;
+  background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.9), transparent);
+  opacity: 0;
+  animation: ecosystem-stream 3s linear infinite;
+}
+
+.network-stream-1 { transform: rotate(25deg) translateY(-80px); }
+.network-stream-2 { transform: rotate(70deg) translateY(-100px); animation-delay: -.5s; }
+.network-stream-3 { transform: rotate(145deg) translateY(-90px); animation-delay: -1s; }
+.network-stream-4 { transform: rotate(210deg) translateY(-70px); animation-delay: -1.5s; }
+.network-stream-5 { transform: rotate(280deg) translateY(-100px); animation-delay: -2s; }
+.network-stream-6 { transform: rotate(330deg) translateY(-80px); animation-delay: -2.5s; }
+
+@keyframes ecosystem-pulse {
+  50% { transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 0 72px rgba(34, 211, 238, 0.48); }
+}
+
+@keyframes ecosystem-node {
+  to { filter: brightness(1.5); margin-top: -7px; }
+}
+
+@keyframes ecosystem-stream {
+  0%, 25% { opacity: 0; }
+  45% { opacity: .85; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecosystem-app-card,
+  .network-core,
+  .network-node,
+  .network-stream {
+    animation: none;
+    transition: none;
+  }
+}
+
 @layer base {
   :root {
     color-scheme: light;
