@@ -180,7 +180,9 @@ export default function WorldHeatmap({ countries, onSelectCountry, selectedCount
           {/* Projection switcher */}
           <div className="flex items-center gap-1 bg-slate-900/90 rounded-xl p-1 border border-slate-800">
             <Globe className="w-3.5 h-3.5 text-slate-500 ml-1.5" />
+            <label htmlFor="heatmap-projection" className="sr-only">Map projection</label>
             <select
+              id="heatmap-projection"
               value={projection}
               onChange={(e) => setProjection(e.target.value)}
               className="bg-transparent text-slate-300 text-xs py-1 px-1.5 rounded-lg focus:outline-none cursor-pointer"

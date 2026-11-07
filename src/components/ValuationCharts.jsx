@@ -291,8 +291,9 @@ export default function ValuationCharts({ countries, selectedCountry, onSelectCo
         {activeTab === 'ranking' && (
           <div className="flex items-center gap-2 text-xs">
             <Filter className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-slate-400 hidden sm:inline">Sort By:</span>
+            <label htmlFor="valuation-chart-sort" className="text-slate-400 hidden sm:inline">Sort By:</label>
             <select
+              id="valuation-chart-sort"
               value={metricFilter}
               onChange={(e) => setMetricFilter(e.target.value)}
               className="bg-slate-900 border border-slate-800 text-slate-200 rounded-lg px-2.5 py-1 focus:outline-none focus:border-blue-500"

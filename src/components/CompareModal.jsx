@@ -75,8 +75,9 @@ export default function CompareModal({ countries, isOpen, onClose, onSelectCount
 
           {selectedIds.length < 3 && (
             <div className="flex items-center gap-2">
-              <span className="text-slate-400">Add Market:</span>
+              <label htmlFor="compare-market-select" className="text-slate-400">Add Market:</label>
               <select
+                id="compare-market-select"
                 onChange={(e) => e.target.value && handleAddCountry(e.target.value)}
                 defaultValue=""
                 className="bg-slate-900 border border-slate-800 text-slate-200 rounded-lg px-2 py-1 text-xs focus:outline-none focus:border-blue-500"
