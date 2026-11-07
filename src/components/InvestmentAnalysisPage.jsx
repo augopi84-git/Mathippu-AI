@@ -87,19 +87,53 @@ const ASSET_ANALYSIS_LIBRARY = {
       { ticker: 'IEMG', name: 'iShares Core MSCI Emerging', score: 76, expectedReturn: '+8% to +15%', rationale: 'Useful geographic diversification outside the domestic market.' },
       { ticker: 'STOXX', name: 'European Industrial ETF', score: 82, expectedReturn: '+9% to +18%', rationale: 'Tracks industrial equity strength and macro easing support.' }
     ]
+  },
+  CAN: {
+    stocks: [
+      { ticker: 'RY.TO', name: 'Royal Bank of Canada', score: 94, expectedReturn: '+10% to +19%', rationale: 'Canada’s largest bank combines strong capital returns, scale and resilient credit growth.' },
+      { ticker: 'SHOP.TO', name: 'Shopify', score: 92, expectedReturn: '+15% to +28%', rationale: 'E-commerce platform growth and improving operating leverage support durable upside.' },
+      { ticker: 'CNR.TO', name: 'Canadian National Railway', score: 89, expectedReturn: '+10% to +18%', rationale: 'Defensive freight volumes and network pricing power support long-term compounding.' },
+      { ticker: 'ENB.TO', name: 'Enbridge', score: 87, expectedReturn: '+8% to +16%', rationale: 'Contracted pipeline cash flows provide stable yield and inflation-linked growth.' },
+      { ticker: 'SU.TO', name: 'Suncor Energy', score: 85, expectedReturn: '+9% to +19%', rationale: 'Integrated operations and disciplined capital allocation can support shareholder returns.' }
+    ],
+    etfs: [
+      { ticker: 'VCN', name: 'Vanguard Canadian All-Cap', score: 93, expectedReturn: '+8% to +16%', rationale: 'Broad, low-cost access to Canadian equities across large, mid and small companies.' },
+      { ticker: 'XIC', name: 'iShares Core S&P/TSX Capped Composite', score: 91, expectedReturn: '+8% to +15%', rationale: 'Core TSX exposure spanning Canada’s largest listed companies.' },
+      { ticker: 'ZEB', name: 'BMO Equal Weight Banks', score: 89, expectedReturn: '+9% to +17%', rationale: 'Diversified exposure to Canadian banks and stronger financial-sector cash flows.' },
+      { ticker: 'XDV', name: 'iShares Canadian Dividend Aristocrats', score: 88, expectedReturn: '+8% to +15%', rationale: 'Targets established Canadian dividend growers with defensive cash-flow profiles.' },
+      { ticker: 'XEG', name: 'iShares S&P/TSX Capped Energy', score: 84, expectedReturn: '+10% to +22%', rationale: 'Concentrated exposure to Canadian energy producers and commodity cycles.' }
+    ]
   }
 };
 
-function getCountryRecommendations(countryId) {
-  return ASSET_ANALYSIS_LIBRARY[countryId] || ASSET_ANALYSIS_LIBRARY.USA;
+function getCountryRecommendations(country) {
+  if (ASSET_ANALYSIS_LIBRARY[country?.id]) return ASSET_ANALYSIS_LIBRARY[country.id];
+
+  const name = country?.name || 'Selected country';
+  return {
+    stocks: [
+      { ticker: `${country?.id || 'MKT'}-1`, name: `${name} Market Leader`, score: 88, expectedReturn: '+10% to +20%', rationale: `Diversified access to the largest quality company in the ${name} market.` },
+      { ticker: `${country?.id || 'MKT'}-2`, name: `${name} Financials Leader`, score: 86, expectedReturn: '+9% to +18%', rationale: `Financial-sector exposure captures local credit growth and improving capital returns.` },
+      { ticker: `${country?.id || 'MKT'}-3`, name: `${name} Quality Compounder`, score: 84, expectedReturn: '+8% to +17%', rationale: `Quality earnings and balance-sheet strength provide resilient long-term compounding.` }
+    ],
+    etfs: [
+      { ticker: `${country?.id || 'MKT'}-ETF`, name: `${name} Broad Market ETF`, score: 90, expectedReturn: '+8% to +16%', rationale: `Broad-market exposure reduces single-name concentration in the ${name} equity market.` },
+      { ticker: `${country?.id || 'MKT'}-DIV`, name: `${name} Dividend ETF`, score: 86, expectedReturn: '+7% to +14%', rationale: `Dividend-oriented exposure emphasizes cash generation and shareholder returns.` },
+      { ticker: `${country?.id || 'MKT'}-QUAL`, name: `${name} Quality ETF`, score: 88, expectedReturn: '+9% to +17%', rationale: `Quality factor exposure focuses on profitability, stability and balance-sheet strength.` }
+    ]
+  };
 }
 
-export default function InvestmentAnalysisPage({ country, onCountryChange }) {
+export default function InvestmentAnalysisPage({ country, countries = [], onCountryChange }) {
   const [assetType, setAssetType] = useState('stocks');
   const [topN, setTopN] = useState(3);
 
   const countryId = country?.id || 'USA';
-  const recommendations = useMemo(() => getCountryRecommendations(countryId), [countryId]);
+  const recommendations = useMemo(() => getCountryRecommendations(country), [country]);
+  const countryOptions = useMemo(
+    () => [...countries].sort((a, b) => a.name.localeCompare(b.name)),
+    [countries]
+  );
   const assetList = recommendations[assetType] || recommendations.stocks;
   const topItems = assetList.slice(0, topN);
 
@@ -126,8 +160,8 @@ export default function InvestmentAnalysisPage({ country, onCountryChange }) {
                 onChange={(event) => onCountryChange?.(event.target.value)}
                 className="bg-slate-950 border border-slate-700 text-slate-100 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/60"
               >
-                {Object.keys(ASSET_ANALYSIS_LIBRARY).map((countryKey) => (
-                  <option key={countryKey} value={countryKey}>{countryKey === 'USA' ? 'United States' : countryKey === 'CHN' ? 'China' : countryKey === 'IND' ? 'India' : countryKey === 'JPN' ? 'Japan' : countryKey === 'DEU' ? 'Germany' : countryKey}</option>
+                {countryOptions.map((countryOption) => (
+                  <option key={countryOption.id} value={countryOption.id}>{countryOption.name}</option>
                 ))}
               </select>
             </label>

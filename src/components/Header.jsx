@@ -28,7 +28,7 @@ export default function Header({
             <img
               src="./mathippu-ai-mark.png"
               alt="Mathippu-AI"
-              className="h-12 w-12 shrink-0 object-contain"
+              className="h-14 w-14 shrink-0 rounded-xl object-contain bg-white/90 p-0.5 shadow-sm ring-1 ring-[#173f35]/10"
             />
 
             <div className="hidden sm:block">

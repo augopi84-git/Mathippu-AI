@@ -567,6 +567,7 @@ export default function App() {
         {activeTab === 'investment' && (
           <InvestmentAnalysisPage
             country={selectedInvestmentCountry}
+            countries={investmentCountryOptions}
             onCountryChange={(countryId) => {
               const nextCountry = enrichedCountries.find((entry) => entry.id === countryId);
               if (nextCountry) {
