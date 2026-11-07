@@ -26,9 +26,9 @@ export default function Header({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <img
-              src="./mathippu-ai-logo.jpg"
+              src="./mathippu-ai-logo-cropped.jpg"
               alt="Mathippu-AI"
-              className="h-[72px] w-[132px] shrink-0 rounded-lg object-contain bg-white p-1 shadow-sm ring-1 ring-[#173f35]/10 sm:h-[76px] sm:w-[160px] lg:h-[82px] lg:w-[150px]"
+              className="h-[72px] w-[98px] shrink-0 rounded-lg object-contain bg-white p-1 shadow-sm ring-1 ring-[#173f35]/10 sm:h-[76px] sm:w-[104px] lg:h-[82px] lg:w-[112px]"
             />
 
             <div className="hidden sm:block">
