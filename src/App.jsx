@@ -157,6 +157,35 @@ const COUNTRY_INVESTMENT_IDEAS = {
   }
 };
 
+const getCountryInvestmentIdeas = (country) => {
+  const dedicatedIdeas = COUNTRY_INVESTMENT_IDEAS[country.id];
+  if (dedicatedIdeas) return dedicatedIdeas;
+
+  const benchmark = country.benchmarkIndex || `${country.name} equity market`;
+  const broadMarket = `${country.name} Broad Market`;
+  const coreName = country.id === 'USA'
+    ? 'VTI'
+    : `${benchmark.replace(/\s+(Index|Composite)$/i, '')} ETF`;
+
+  return {
+    summary: `${country.name}-focused market basket built around broad ${country.name} exposure, domestic quality leaders and valuation-aware diversification.`,
+    buckets: INVESTMENT_TIME_BUCKETS.map((bucket, index) => ({
+      key: bucket.key,
+      returnRange: bucket.returnRange,
+      picks: index < 4
+        ? [
+            { name: coreName, type: 'ETF' },
+            { name: broadMarket, type: 'ETF' },
+          ]
+        : [
+            { name: broadMarket, type: 'ETF' },
+            { name: `${country.name} Quality Leaders`, type: 'ETF' },
+          ],
+      thesis: `A valuation-aware ${bucket.label.toLowerCase()} allocation for ${country.name}, balancing local market exposure with diversified quality holdings.`,
+    })),
+  };
+};
+
 export default function App() {
   const [countriesData, setCountriesData] = useState(COUNTRY_MARKET_DATA);
   const [dbMetadata, setDbMetadata] = useState(INITIAL_DATABASE_METADATA);
@@ -196,7 +225,7 @@ export default function App() {
   }, [countriesData, weights]);
 
   const investmentCountryOptions = useMemo(() => {
-    return enrichedCountries;
+    return [...enrichedCountries].sort((a, b) => a.name.localeCompare(b.name));
   }, [enrichedCountries]);
 
   const selectedInvestmentCountry = useMemo(() => {
@@ -205,7 +234,7 @@ export default function App() {
       || { id: 'USA', name: 'United States' };
   }, [enrichedCountries, selectedRadarCountry, investmentCountryOptions]);
 
-  const investmentIdeas = COUNTRY_INVESTMENT_IDEAS[selectedInvestmentCountry.id] || COUNTRY_INVESTMENT_IDEAS.USA;
+  const investmentIdeas = getCountryInvestmentIdeas(selectedInvestmentCountry);
 
   // Filtered Countries
   const filteredCountries = useMemo(() => {
