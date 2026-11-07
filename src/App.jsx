@@ -43,6 +43,20 @@ const COUNTRY_INVESTMENT_IDEAS = {
       { key: '15to20year', picks: [{ name: 'Vanguard Total Stock Market', type: 'ETF' }, { name: 'AAPL', type: 'Stock' }], thesis: 'Core equity exposure remains the strongest long-run wealth creator.', returnRange: '+25% to +100%+' }
     ]
   },
+  CAN: {
+    summary: 'Canada-focused dividend and quality basket anchored in banks, energy, pipelines, railways and broad TSX exposure.',
+    buckets: [
+      { key: 'daily', picks: [{ name: 'XIC', type: 'ETF' }, { name: 'RY.TO', type: 'Stock' }], thesis: 'Broad Canadian exposure and bank liquidity provide a stable tactical setup.', returnRange: '+0.5% to +2.5%' },
+      { key: 'week', picks: [{ name: 'XIU', type: 'ETF' }, { name: 'SHOP.TO', type: 'Stock' }], thesis: 'TSX momentum paired with Shopify’s earnings trend can improve near-term returns.', returnRange: '+1% to +5%' },
+      { key: 'month', picks: [{ name: 'XDV', type: 'ETF' }, { name: 'TD.TO', type: 'Stock' }], thesis: 'Dividend stability and resilient Canadian bank fundamentals support the monthly view.', returnRange: '+2% to +8%' },
+      { key: 'year', picks: [{ name: 'VCE', type: 'ETF' }, { name: 'CNR.TO', type: 'Stock' }], thesis: 'Canadian broad-market participation and rail freight activity support annual compounding.', returnRange: '+8% to +18%' },
+      { key: '2year', picks: [{ name: 'XEG', type: 'ETF' }, { name: 'ENB.TO', type: 'Stock' }], thesis: 'Pipeline cash flow and energy-sector normalization can improve the valuation cycle.', returnRange: '+12% to +25%' },
+      { key: '3year', picks: [{ name: 'VCN', type: 'ETF' }, { name: 'SU.TO', type: 'Stock' }], thesis: 'Broad Canadian quality plus energy cash generation offer a balanced multi-year setup.', returnRange: '+15% to +35%' },
+      { key: '5year', picks: [{ name: 'ZEB', type: 'ETF' }, { name: 'CP.TO', type: 'Stock' }], thesis: 'Bank dividends and North American railway growth support long-run shareholder returns.', returnRange: '+18% to +45%' },
+      { key: '10year', picks: [{ name: 'XIC', type: 'ETF' }, { name: 'BNS.TO', type: 'Stock' }], thesis: 'TSX diversification and disciplined financial-sector compounding fit a full-cycle allocation.', returnRange: '+20% to +60%' },
+      { key: '15to20year', picks: [{ name: 'VCN', type: 'ETF' }, { name: 'RY.TO', type: 'Stock' }], thesis: 'Canadian market breadth and high-quality bank growth provide durable long-term capital formation.', returnRange: '+25% to +100%+' }
+    ]
+  },
   CHN: {
     summary: 'Value and stimulus-driven recovery basket, focused on industrials, consumer reopening, and EV supply chains.',
     buckets: [
