@@ -38,10 +38,23 @@ export default function EcosystemHome() {
 
   return (
     <div className="ecosystem-home min-h-screen overflow-hidden bg-[#0b1220] text-white">
+      <a
+        href="#platform"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-slate-950"
+      >
+        Skip to main content
+      </a>
       <header className="relative z-20 border-b border-white/[0.07] bg-[#0b1220]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 md:px-8">
           <a href="#" className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
-            <img src="./mathippu-ai-logo-cropped.jpg" alt="" className="h-11 w-11 rounded-lg object-contain bg-white/95 p-1" />
+            <img
+              src="./mathippu-ai-logo-44.jpg"
+              alt=""
+              width="44"
+              height="44"
+              decoding="async"
+              className="h-11 w-11 rounded-lg object-contain bg-white/95 p-1"
+            />
             <span className="text-lg font-semibold tracking-tight">Mathippu AI</span>
           </a>
 
@@ -96,7 +109,7 @@ export default function EcosystemHome() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Mathippu ecosystem</p>
               <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">Our Applications</h2>
             </div>
-            <span className="hidden text-sm text-slate-500 sm:block">One identity. Many intelligent tools.</span>
+            <span className="hidden text-sm text-slate-400 sm:block">One identity. Many intelligent tools.</span>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -108,11 +121,11 @@ export default function EcosystemHome() {
                   className={`ecosystem-app-card relative min-h-[270px] overflow-hidden rounded-2xl border p-5 ${
                     application.active
                       ? 'border-cyan-300/30 bg-gradient-to-br from-slate-800/95 to-slate-900/95 shadow-[0_20px_70px_rgba(8,145,178,0.10)]'
-                      : 'border-dashed border-slate-700/70 bg-slate-900/35 opacity-55'
+                      : 'border-dashed border-slate-600 bg-slate-900/70'
                   }`}
                 >
                   <div className={`mb-8 flex h-12 w-12 items-center justify-center rounded-xl border ${application.active ? 'border-cyan-300/20 bg-cyan-300/[0.08] text-cyan-300' : 'border-slate-700 bg-slate-800/50 text-slate-500'}`}>
-                    <Icon className="h-5 w-5" />
+                    <Icon aria-hidden="true" focusable="false" className="h-5 w-5" />
                   </div>
                   <p className="text-xl font-semibold">{application.name}</p>
                   <p className="mt-2 min-h-12 text-sm leading-6 text-slate-400">{application.description}</p>
@@ -123,12 +136,12 @@ export default function EcosystemHome() {
                       className="mt-7 flex w-full items-center justify-between rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(37,99,235,0.25)] transition-all duration-100 hover:bg-blue-500 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
                     >
                       Launch App
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight aria-hidden="true" focusable="false" className="h-4 w-4" />
                     </button>
                   ) : (
-                    <div className="mt-7 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    <div className="mt-7 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                       Coming Soon
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight aria-hidden="true" focusable="false" className="h-4 w-4" />
                     </div>
                   )}
                 </article>
@@ -138,7 +151,7 @@ export default function EcosystemHome() {
         </section>
       </main>
 
-      <footer id="docs" className="border-t border-white/[0.07] px-5 py-7 text-sm text-slate-500 md:px-8">
+      <footer id="docs" className="border-t border-white/[0.07] px-5 py-7 text-sm text-slate-400 md:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Mathippu AI</span>
           <span>Intelligence, connected.</span>
